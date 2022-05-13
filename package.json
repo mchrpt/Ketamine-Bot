@@ -1,0 +1,27 @@
+{
+  "name": "beginnerdiscordv13bot",
+  "version": "1.0.0",
+  "description": "An open source beginner Bot for DiscordJS v13 by Mchrpt",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/test-rawrxduwu"
+  },
+  "author": "JerryFunHouse",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/voice": "^0.9.0",
+    "discord.js": "^13.6.0",
+    "fastify": "^3.29.0",
+    "fastify-formbody": "^5.3.0",
+    "fastify-static": "^4.7.0",
+    "handlebars": "^4.7.7",
+    "point-of-view": "^6.0.0",
+    "node-fetch": "^2.6.1"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
