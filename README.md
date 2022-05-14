@@ -1,10 +1,14 @@
-## WARNING: Requirements
+# Lego Yoda Ketamine Bot Hrmrmrmrmr
 
-Require more Ketamine I do
+Run over people in my 2001 honda civic I must.
 
 ## ABOUT
 
-Ban League of Legends players from my discord server I must
+A discord bot I am. Ban League of Legends players from my discord server I must.
+
+## WARNING: Requirements
+
+Require more Ketamine I do
 
 ## INSTALLATION
 
