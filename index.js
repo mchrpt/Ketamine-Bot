@@ -56,8 +56,7 @@ fs.readdir("./commands/", (error, files) => {
   });
 });
 
-setInterval(async () => {
-  await fetch('https://test-rawrxduwu.glitch.me').then(console.log('Pinged!'))
-}, 60000);
+
 
 client.login(CONFIG.token);
+
