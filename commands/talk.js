@@ -34,8 +34,12 @@ module.exports = {
                     stream: false,
                     stop: ['\n', '\n\n']
                 });
-                message.reply(`${gptResponse.data.choices[0].text.substring(5)}`);
-                prompt += `${gptResponse.data.choices[0].text}\n`;
+                    let reply = `${gptResponse.data.choices[0].text.substring(5)}`;
+                    if(!reply){
+                        reply = "No fucking idea what you are talking about, I do";
+                    }
+                    message.reply(reply);
+                    prompt += `${reply}\n`;
             })();
     },
 }
