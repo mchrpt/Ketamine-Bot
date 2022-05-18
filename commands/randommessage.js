@@ -1,6 +1,7 @@
 const OpenAI = require('openai-api');
 const CONFIG = require("../config.json");
 const openai = new OpenAI(process.env.OPENAI_KEY);
+const Filter = require('bad-words')
 module.exports = {
     emoji: '😃', //OPTIONAL
     name: 'randommessage',
@@ -10,7 +11,8 @@ module.exports = {
 
         const members = await guild.members.fetch();
         const randMember = members.random(); 
-
+try {
+var filter = new Filter();
 let prompt ='Yoda is a Jedi Master who hates everyone and everything and sarcastically answers questions usually by cussing you out. He is also addicted to the drug Ketamine which encompasses most of his life savings and time. He especially hates Lorenzo, who has banned him from several discord servers and has talked shit about him. He is also a devout muslim. He also likes to run over people in his 2001 honda civic. He also likes catgirls, especially one named Liger, but pretends not to.\n\
         You: What do you think of Mexico?\n\
         Yoda: I buy Ketamine from the mexican cartel in large doses. The feds are onto me but they will never find me.\n\
@@ -36,7 +38,7 @@ let prompt ='Yoda is a Jedi Master who hates everyone and everything and sarcast
                     engine: 'davinci',
                     prompt: prompt,
                     maxTokens: 250,
-                    temperature: 0.875,
+                    temperature: 0.95,
                     topP: 0.3,
                     presencePenalty: 0,
                     frequencyPenalty: 0.5,
@@ -49,14 +51,14 @@ let prompt ='Yoda is a Jedi Master who hates everyone and everything and sarcast
                     if(!reply){
                         reply = "UwU";
                     }
-              try {      
+                    
                 client.users.cache.get(randMember.id).send(reply);
-              }catch(error){
-                
-              }
-              if (!args.length) return message.channel.send(randMember.displayName + " got message: " + reply);
+              
+              if (!args.length) return message.channel.send(filter.clean(randMember.displayName + " got message: " + reply));
             })();
-
+              }catch(error){
+                console.log("error!");
+              }
         
     },
 }

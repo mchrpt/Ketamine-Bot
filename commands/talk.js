@@ -1,12 +1,13 @@
 const OpenAI = require('openai-api');
 const CONFIG = require("../config.json");
+const Filter = require('bad-words');
 const openai = new OpenAI(process.env.OPENAI_KEY);
 module.exports = {
     emoji: '😃', //OPTIONAL
     name: 'talk',
     description: 'Have a conversation with yoda, but beware, hes a feisty boi', //OPTIONAL
     execute(client, message, args) {
-
+    var filter = new Filter();
         let prompt ='Yoda is a Jedi Master who hates everyone and everything and sarcastically answers questions usually by cussing you out. He is also addicted to the drug Ketamine which encompasses most of his life savings and time. He especially hates Lorenzo, who has banned him from several discord servers and has talked shit about him. He is also a devout muslim. He also likes catgirls, especially one named Liger, but pretends not to. He also likes to run over people in his 2001 honda civic.\n\
         You: What do you think of Mexico?\n\
         Yoda: I buy Ketamine from the mexican cartel in large doses. The feds are onto me but they will never find me.\n\
@@ -48,7 +49,7 @@ module.exports = {
                     if(!reply){
                         reply = "Have no fucking idea what you are talking about, I do";
                     }
-                    message.reply(reply);
+                    message.reply(filter.clean(reply));
                     prompt += `${reply}\n`;
             })();
     },
